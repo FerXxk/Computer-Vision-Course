@@ -22,8 +22,8 @@ s = 0;  % Skew.
 
 % Matriz de parámetros intrínsecos:
 K = [ fx   s*fx  u0
-       0    fy   v0
-       0     0    1 ];  
+    0    fy   v0
+    0     0    1 ];
 
 %% Posición y orientación relativa de {C} respecto a {W}:
 % Posición del origen de {C} respecto al sistema {W}:
@@ -35,16 +35,16 @@ theta = 0 ;     % Ángulo de rotación respecto a eje Y'.
 phi   =-3*pi/4; % Ángulo de rotación respecto a eje X''.
 
 Rz = [ cos(psi) -sin(psi) 0
-       sin(psi)  cos(psi) 0
-           0         0    1 ];
-      
+    sin(psi)  cos(psi) 0
+    0         0    1 ];
+
 Ry = [ cos(theta) 0 sin(theta)
-           0      1    0
-      -sin(theta) 0 cos(theta) ];           
+    0      1    0
+    -sin(theta) 0 cos(theta) ];
 
 Rx = [ 1    0        0
-       0 cos(phi) -sin(phi) 
-       0 sin(phi)  cos(phi) ];
+    0 cos(phi) -sin(phi)
+    0 sin(phi)  cos(phi) ];
 
 wRc = Rz*Ry*Rx;
 
@@ -52,7 +52,7 @@ wTc = [wRc wtc; [0 0 0 1]];
 
 cTw = inv(wTc);
 cRw = cTw(1:3,1:3);
-ctw = cTw(1:3,4);  
+ctw = cTw(1:3,4);
 
 % Se puede verificar que la forma rápida de invertir una matriz de transformación es correcta:
 %cTw - [wRc', -wRc'*wtc; [0 0 0 1]];
@@ -120,19 +120,19 @@ mp=[0 4 4 0 0
     0 0 3 3 0
     0 0 0 0 0];
 mp2=[2   2.5  2 1.5 2
-     1  1.5   2  1.5  1
-     0    0   0  0  0];
+    1  1.5   2  1.5  1
+    0    0   0  0  0];
 
 mp3=[pa1,pa2,pa3,pa4,pa1];
 
 mp4=[pm1,pm2,pm3,pm4,pm1];
 
-figure(2); 
+figure(2);
 % plot3(mp(1,:),mp(2,:),mp(3,:)); hold on;
 % plot3(mp2(1,:),mp2(2,:),mp2(3,:));
 
 plot(mp3(1,:),mp3(2,:)); hold on;
-plot(mp4(1,:),mp4(2,:)); 
+plot(mp4(1,:),mp4(2,:));
 
 %axis([-50,N+50,-50,M+50]);
 
@@ -144,10 +144,10 @@ set(gca,'YDir', 'reverse');
 
 
 %% Renderizado mesa
-Im_mesa= imread("imagenMesaMaderaGris.png");
+Im_mesa= imread("wooden_table_grayscale.png");
 fondo_2=mp4(:,1:4);
 mesa = [0 626 626  0 ;
-        0  0  417 417];
+    0  0  417 417];
 Hm(:,:)=HomographySolve(mesa,fondo_2); %Matriz de homografía
 
 Im_rend=100*ones(M,N);
@@ -173,7 +173,7 @@ ylabel("Eje vertical [pix]");grid on;
 Im_aruco= imread("aruco.png");
 cubo_2=mp3(:,1:4);
 aruco = [0 756 756  0 ;
-        0  0  756 756];
+    0  0  756 756];
 Hc(:,:)=HomographySolve(aruco,cubo_2); %Matriz de homografía
 
 for i=1:756
@@ -196,7 +196,7 @@ imshow(uint8(Im_rend)); hold off;
 
 
 %% Dibujo 3D
-figure(); 
+figure();
 plot3(mp(1,:),mp(2,:),mp(3,:)); hold on;
 %plot3(mp2(1,:),mp2(2,:),mp2(3,:));hold on;
 
@@ -214,14 +214,14 @@ vertices = 0.2*[
     1 0 1;  % Vértice 6
     1 1 1;  % Vértice 7
     0 1 1   % Vértice 8
-];
+    ];
 
 % Define las aristas del cubo usando los índices de los vértices
 aristas = [
     1 2; 2 3; 3 4; 4 1;  % Aristas de la base inferior
     5 6; 6 7; 7 8; 8 5;  % Aristas de la base superior
     1 5; 2 6; 3 7; 4 8   % Aristas verticales
-];
+    ];
 
 offset=[1,1,0; 2,2,0 ;2,1,0;3,2.5,0];
 
@@ -299,33 +299,33 @@ for r=1:4
         % Dibuja la rueda
         fill3(x_rueda, y_rueda, z_rueda, 'k-', 'LineWidth', 2); hold on; % Rueda en color negro
 
-        
+
         switch r
             case 1
                 if(j==1)
-                ruedas11(:,1:3) = [x_rueda; y_rueda; z_rueda]';
+                    ruedas11(:,1:3) = [x_rueda; y_rueda; z_rueda]';
                 else
-                ruedas12(:,1:3) = [x_rueda; y_rueda; z_rueda]';
+                    ruedas12(:,1:3) = [x_rueda; y_rueda; z_rueda]';
                 end
             case 2
-               if(j==1)
-                ruedas21(:,1:3) = [x_rueda; y_rueda; z_rueda]';
+                if(j==1)
+                    ruedas21(:,1:3) = [x_rueda; y_rueda; z_rueda]';
                 else
-                ruedas22(:,1:3) = [x_rueda; y_rueda; z_rueda]';
+                    ruedas22(:,1:3) = [x_rueda; y_rueda; z_rueda]';
                 end
             case 3
                 if(j==1)
-                ruedas31(:,1:3) = [x_rueda; y_rueda;z_rueda]';
+                    ruedas31(:,1:3) = [x_rueda; y_rueda;z_rueda]';
                 else
-                ruedas32(:,1:3) = [x_rueda; y_rueda; z_rueda]';
+                    ruedas32(:,1:3) = [x_rueda; y_rueda; z_rueda]';
                 end
             case 4
-               if(j==1)
-                ruedas41(:,1:3) = [x_rueda; y_rueda; z_rueda]';
+                if(j==1)
+                    ruedas41(:,1:3) = [x_rueda; y_rueda; z_rueda]';
                 else
-                ruedas42(:,1:3) = [x_rueda; y_rueda; z_rueda]';
+                    ruedas42(:,1:3) = [x_rueda; y_rueda; z_rueda]';
                 end
-       
+
         end
 
     end
@@ -341,10 +341,13 @@ cubo_3=mpc3(:,1:4);
 cubo_4=mpc4(:,1:4);
 aruco = [0 756 756  1 ;
     0  0  756 756];
-Hc1(:,:)=HomographySolve(aruco,cubo_1); %Matriz de homografía
+Hc1(:,:)=homography_solver(aruco,cubo_1);
+%Matriz de homografía
 Hc2(:,:)=HomographySolve(aruco,cubo_2); %Matriz de homografía
-Hc3(:,:)=HomographySolve(aruco,cubo_3); %Matriz de homografía
-Hc4(:,:)=HomographySolve(aruco,cubo_4); %Matriz de homografía
+Hc3(:,:)=homography_solver(aruco,cubo_3);
+%Matriz de homografía
+Hc4(:,:)=homography_solver(aruco,cubo_4);
+%Matriz de homografía
 
 for i=1:756
     for j=1:756
@@ -406,7 +409,7 @@ imshow(uint8(Im_rend)); hold off;
 
 %%
 
-Im_mesa = imread("imagenMesaMaderaColor.png");
+Im_mesa = imread("wooden_table_color.png");
 [M1, N1, C] = size(Im_mesa);  % Dimensiones de la imagen de entrada
 
 % Inicializar la imagen de salida en color (asumiendo que Im_mesa es una imagen en color)
@@ -418,7 +421,7 @@ mesa = [0 626 626 0;
     0 0 417 417];
 
 % Calcular la homografía para proyectar la imagen de la mesa en el plano destino
-Hm = HomographySolve(mesa, fondo_2);
+Hm = homography_solver(mesa,fondo_2);
 
 % Recorrer cada píxel de la imagen de la mesa
 for i = 1:626

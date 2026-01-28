@@ -1,5 +1,5 @@
 
-function maskedRGBImage = createMask(RGB,fruta)
+function maskedRGBImage = create_mask(RGB,fruta)
 %createMask  Threshold RGB image using auto-generated code from colorThresholder app.
 %  [BW,MASKEDRGBIMAGE] = createMask(RGB) thresholds image RGB using
 %  auto-generated code from the colorThresholder app. The colorspace and
@@ -32,16 +32,16 @@ switch fruta
         channel3Max = 1.000;
         filtrado=0;
     case 2 %tomate
-       channel1Min = 0.978;
-channel1Max = 0.069;
+        channel1Min = 0.978;
+        channel1Max = 0.069;
 
-% Define thresholds for channel 2 based on histogram settings
-channel2Min = 0.220;
-channel2Max = 0.969;
+        % Define thresholds for channel 2 based on histogram settings
+        channel2Min = 0.220;
+        channel2Max = 0.969;
 
-% Define thresholds for channel 3 based on histogram settings
-channel3Min = 0.696;
-channel3Max = 1.000;
+        % Define thresholds for channel 3 based on histogram settings
+        channel3Min = 0.696;
+        channel3Max = 1.000;
         filtrado=1;
 
     case 3 % berenjena
@@ -55,15 +55,15 @@ channel3Max = 1.000;
 
     case 4 %limon
         channel1Min = 0.072;
-channel1Max = 0.201;
+        channel1Max = 0.201;
 
-% Define thresholds for channel 2 based on histogram settings
-channel2Min = 0.449;
-channel2Max = 1.000;
+        % Define thresholds for channel 2 based on histogram settings
+        channel2Min = 0.449;
+        channel2Max = 1.000;
 
-% Define thresholds for channel 3 based on histogram settings
-channel3Min = 0.646;
-channel3Max = 1.000;
+        % Define thresholds for channel 3 based on histogram settings
+        channel3Min = 0.646;
+        channel3Max = 1.000;
 
         filtrado=0;
 

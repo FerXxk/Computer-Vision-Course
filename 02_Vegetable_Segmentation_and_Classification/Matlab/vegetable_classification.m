@@ -1,16 +1,16 @@
 
-imagen = imread ("./Bean/0511.jpg");
+imagen = imread ("vegetables_1.jpg");
 
-imagen = imresize(imagen, 7);
+%%imagen = imresize(imagen, 7);
 
 
 
 figure(1);
 imshow(imagen); hold on;
-title('Filtrado de vegetales');
+title('Vegetable filtering');
 for fruta=0:1:6
-    %fruta=6; % kiwi,pim,tom,ber,lim,man,zan
-    imagensegmentada=createMask(imagen,fruta);
+    % fruta=2; % kiwi,pim,tom,ber,lim,man,zan
+    imagensegmentada=create_mask(imagen,fruta);
     % figure();
     % imshow(imagensegmentada);
     f = rgb2gray(imagensegmentada);
@@ -33,12 +33,12 @@ for fruta=0:1:6
         case 1
             limexup=1;
             limexdo=0.7;
-            minArea = 19000; % Área mínima
-            maxArea = 160000; % Área máxima
+            minArea = 10000; % Área mínima
+            maxArea = 200000; % Área máxima
         case 2
-            limexup=0.8;
+            limexup=0.9;
             limexdo=0;
-            minArea = 9000; % Área mínima
+            minArea = 4000; % Área mínima
             maxArea = 10000000; % Área máxima
         case 3
             limexup=0.95;
@@ -87,8 +87,8 @@ for fruta=0:1:6
             boxk=[boxk,k];
         end
     end
-    etiqueta={'Kiwi','Pimiento','Tomate','Berenjena','Limón','Mandarina','Zanahoria'};
-    colores={[0.65, 0.16, 0.16],[0, 0.79, 0],'red',[0.54, 0.2, 0.39],'yellow',[1, 0.65, 0], [1, 0.55, 0]};
+    etiqueta={'Kiwi','Pepper','Tomato','Eggplant','Lemon','Mandarin','Carrot'};
+    colores={[0.65, 0.16, 0.16],[0, 0.79, 0],'red', [0.54, 0.2, 0.39],'yellow',[1, 0.65, 0], [1, 0.55, 0]};
 
     for k = 1:size(boxk,2)
         % Dibujar la bounding box

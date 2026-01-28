@@ -1,7 +1,6 @@
 
-
- [trainImags ,trainLabels] = readMNIST('./MNIST/train-images-idx3-ubyte','./MNIST/train-labels-idx1-ubyte', 60000, 0);
- [testImags, testLabels] = readMNIST ('./MNIST/t10k-images-idx3-ubyte', './MNIST/t10k-labels-idx1-ubyte', 10000, 0);
+[trainImags ,trainLabels] = read_mnist('./MNIST/train-images-idx3-ubyte','./MNIST/train-labels-idx1-ubyte', 60000, 0);
+[testImags, testLabels] = read_mnist ('./MNIST/t10k-images-idx3-ubyte', './MNIST/t10k-labels-idx1-ubyte', 10000, 0);
 
 
 %% Procesar imágenes y etiquetas
@@ -24,9 +23,9 @@ Nprot = cellfun(@(x) size(x, 2), Z);
 
 VX = zeros(400, 400, 10); % Matrices de covarianza
 Vinv = zeros(400, 400, 10); % Inversas de covarianza
-f = zeros(10, 1); % Función de decisión 
+f = zeros(10, 1); % Función de decisión
 
-lambda = 1e-1; 
+lambda = 1e-1;
 
 for number = 0:9
     nclase = number + 1;
@@ -37,7 +36,7 @@ for number = 0:9
 
     VX(:, :, nclase) = V;
     Vinv(:, :, nclase) = inv(V);
-    
+
     detV = det(V);
     if detV <= 0
         detV = eps; % Evitar log(0)
@@ -48,7 +47,7 @@ end
 mu_clases = cell(10, 1); % Medias de las 10 clases
 
 for number = 0:9
-    mu_clases{number + 1} = mean(Z{number + 1}, 2); 
+    mu_clases{number + 1} = mean(Z{number + 1}, 2);
 end
 
 %% Clasificación de patrones elegidos aleatoriamente:
@@ -62,14 +61,14 @@ for i = 1:Ntest
     % Obtener la imagen de prueba y su etiqueta
     Imag = testImags(:, :, i);
     label = testLabels(i); % Numero real de la imagen
-    x = Imag(:); % Vector de características 
+    x = Imag(:); % Vector de características
 
     % Inicializar variables para encontrar la clase
     fdMax = -Inf;
-    clase = -1;   
+    clase = -1;
     % Calcular distancias de Mahalanobis y funciones de decisión para cada clase
     for number = 0:9
-        nclase = number + 1; 
+        nclase = number + 1;
         mu = mu_clases{nclase}; % Media de la clase actual
         Vinv_class = Vinv(:, :, nclase); % Inversa de la covarianza de la clase actual
 
@@ -88,27 +87,27 @@ for i = 1:Ntest
     end
 
     % Dibujar el resultado con color según la clase asignada
- 
-% img_ampliada = imresize(Imag, 10);
-% imshow(img_ampliada);
-% title(['Número real: ' num2str(label)]);
+
+    img_ampliada = imresize(Imag, 10);
+    imshow(img_ampliada);
+    title(['Número real: ' num2str(label)]);
 
 
-% Mostrar la predicción
+    % Mostrar la predicción
 
-if(clase==label)
-%     text(10, 10, ['Predicción: ' num2str(clase)], 'Color', 'green', 'FontSize', 12, 'FontWeight', 'bold');
-%     pause(0.01);
-else
-%     text(10, 10, ['Predicción: ' num2str(clase)], 'Color', 'red', 'FontSize', 12, 'FontWeight', 'bold');
-%     pause(0.08);
-    fallos=fallos+1;
-end
+    if(clase==label)
+        text(10, 10, ['Predicción: ' num2str(clase)], 'Color', 'green', 'FontSize', 12, 'FontWeight', 'bold');
+        pause(0.1);
+    else
+        text(10, 10, ['Predicción: ' num2str(clase)], 'Color', 'red', 'FontSize', 12, 'FontWeight', 'bold');
+        pause(0.3);
+        fallos=fallos+1;
+    end
 
 end
 
 acc=(Ntest-fallos)/Ntest*100; % Calculamos tasa de aciertos
- disp(['Número de test: ' num2str(Ntest) ,', Fallos: ' num2str(fallos) ', Acierto: ' num2str(acc) '%' ]);
+disp(['Test number: ' num2str(Ntest) ,', Failures: ' num2str(fallos) ', Accuracy: ' num2str(acc) '%' ]);
 hold off;
 
 %%
@@ -121,14 +120,14 @@ for i = 1:Ntrain
     % Obtener la imagen de prueba y su etiqueta
     Imag = trainImags(:, :, i);
     label = trainLabels(i); % Numero real de la imagen
-    x = Imag(:); % Vector de características 
+    x = Imag(:); % Vector de características
 
     % Inicializar variables para encontrar la clase
     fdMax = -Inf;
-    clase = -1;   
+    clase = -1;
     % Calcular distancias de Mahalanobis y funciones de decisión para cada clase
     for number = 0:9
-        nclase = number + 1; 
+        nclase = number + 1;
         mu = mu_clases{nclase}; % Media de la clase actual
         Vinv_class = Vinv(:, :, nclase); % Inversa de la covarianza de la clase actual
 
@@ -147,26 +146,25 @@ for i = 1:Ntrain
     end
 
     % Dibujar el resultado con color según la clase asignada
- 
-% img_ampliada = imresize(Imag, 10);
-% imshow(img_ampliada);
-% title(['Número real: ' num2str(label)]);
+
+    img_ampliada = imresize(Imag, 10);
+    imshow(img_ampliada);
+    title(['Número real: ' num2str(label)]);
 
 
-% Mostrar la predicción
+    % Mostrar la predicción
 
-if(clase==label)
-%     text(10, 10, ['Predicción: ' num2str(clase)], 'Color', 'green', 'FontSize', 12, 'FontWeight', 'bold');
-%     pause(0.01);
-else
-%     text(10, 10, ['Predicción: ' num2str(clase)], 'Color', 'red', 'FontSize', 12, 'FontWeight', 'bold');
-%     pause(0.08);
-    fallos=fallos+1;
-end
+    if(clase==label)
+        text(10, 10, ['Predicción: ' num2str(clase)], 'Color', 'green', 'FontSize', 12, 'FontWeight', 'bold');
+        pause(0.01);
+    else
+        text(10, 10, ['Predicción: ' num2str(clase)], 'Color', 'red', 'FontSize', 12, 'FontWeight', 'bold');
+        pause;
+        fallos=fallos+1;
+    end
 
 end
 
 acc=(Ntrain-fallos)/Ntrain*100; % Calculamos tasa de aciertos
- disp(['Número de train: ' num2str(Ntrain) ,', Fallos: ' num2str(fallos) ', Acierto: ' num2str(acc) '%' ]);
+disp(['Train number: ' num2str(Ntrain) ,', Failures: ' num2str(fallos) ', Accuracy: ' num2str(acc) '%' ]);
 hold off;
-

@@ -1,21 +1,21 @@
-function H = HomographySolve (pIn, pOut)
+function H = homography_solver (pIn, pOut)
 %
 % H = HomographySolve (pIn, pOut)
 %
-%    Función que encuentra la matriz de homografía a partir de, al menos, 4 parejas de puntos.
-%    Usa el método de descomposición en valores singulares (SVD) descrito, por ejemplo, en:
+%    Funciï¿½n que encuentra la matriz de homografï¿½a a partir de, al menos, 4 parejas de puntos.
+%    Usa el mï¿½todo de descomposiciï¿½n en valores singulares (SVD) descrito, por ejemplo, en:
 %    http://www.robots.ox.ac.uk/%7Evgg/presentations/bmvc97/criminispaper/node3.html
 %
-%    Adaptación a partir de la versión original de David Young, University of Sussex, February 2008.
+%    Adaptaciï¿½n a partir de la versiï¿½n original de David Young, University of Sussex, February 2008.
 %
-% Parámetros:
+% Parï¿½metros:
 %    pIn:  Matriz de dimensiones 2xn correspondiente a los puntos de entrada:
 %          pIn = [x1 x2 x3 ...;
 %                 y1 y1 y3 ... ]
 %    pOut: Matriz de dimensiones 2xn correspondiente a los puntos de salida con la misma estructura
 %          que 'pIn'.
 %
-%    H:    Se devuelve la matriz de homografía que transforma 'pIn' en 'pOut':
+%    H:    Se devuelve la matriz de homografï¿½a que transforma 'pIn' en 'pOut':
 %          pOut = H * pIn;
 %
 
@@ -27,27 +27,27 @@ if size(pIn,1) ~= 2
 end
 n = size(pIn,2);
 if n < 4
-    error ('Número de puntos insuficiente');
+    error ('Numero de puntos insuficiente');
 end
 
-% Componemos la matriz de coeficientes para el sistema de ecuaciones homogéneo:
+% Componemos la matriz de coeficientes para el sistema de ecuaciones homogeneo:
 A11 = [pIn' ones(n,1)];
 A12 = zeros(n,3);
 A13 = - [ pIn(1,:)' .* pOut(1,:)' ,  pIn(2,:)' .* pOut(1,:)' ,   pOut(1,:)' ];
 A23 = - [ pIn(1,:)' .* pOut(2,:)' ,  pIn(2,:)' .* pOut(2,:)' ,   pOut(2,:)' ];
 A = [A11 A12 A13;
-     A12 A11 A23];
+    A12 A11 A23];
 
 if n == 4
-   [U,D,V] = svd(A);
+    [U,D,V] = svd(A);
 else
-   [U,D,V] = svd(A,'econ');
+    [U,D,V] = svd(A,'econ');
 end
 
-% Dado que svd() devuelve los valores singulares ordenados de mayor a menor, el valor singular más 
-% cercano a cero es el último. El vector singular correspondiente es, por tanto, el contenido en la 
-% última columna de V:
+% Dado que svd() devuelve los valores singulares ordenados de mayor a menor, el valor singular ms
+% cercano a cero es el ultimo. El vector singular correspondiente es, por tanto, el contenido en la
+% ultima columna de V:
 h = V(:,end);
 
-% Conformamos la matriz de homografía:
+% Conformamos la matriz de homografia:
 H = reshape(h,3,3)';

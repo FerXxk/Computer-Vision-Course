@@ -21,8 +21,8 @@ s = 0;  % Skew.
 
 % Matriz de parámetros intrínsecos:
 K = [ fx   s*fx  u0
-       0    fy   v0
-       0     0    1 ];  
+    0    fy   v0
+    0     0    1 ];
 
 % Posición y orientación relativa de {C} respecto a {W}:
 % Posición del origen de {C} respecto al sistema {W}:
@@ -84,8 +84,8 @@ mp=[0 4 4 0 0
     0 0 3 3 0
     0 0 0 0 0];
 mp2=[2   2.5  2 1.5 2
-     1  1.5   2  1.5  1
-     0    0   0  0  0];
+    1  1.5   2  1.5  1
+    0    0   0  0  0];
 
 mp3=[pa1,pa2,pa3,pa4,pa1];
 
@@ -102,9 +102,9 @@ H=1000;
 
 fondo_2 = mp4(:, 1:4);
 mesa = [0 W W 0;
-        0 0 H H];
+    0 0 H H];
 
-Hm(:,:)=HomographySolve(mesa,fondo_2); %Matriz de homografía
+Hm(:,:)=homography_solver(mesa,fondo_2); %Matriz de homografía
 
 Im_rend=100*ones(M,N);
 for i=1:W
@@ -129,8 +129,8 @@ ylabel("Eje vertical [pix]");grid on;
 Im_aruco= imread("aruco.png");
 cubo_2=mp3(:,1:4);
 aruco = [0 756 756  0 ;
-        0  0  756 756];
-Hc(:,:)=HomographySolve(aruco,cubo_2); %Matriz de homografía
+    0  0  756 756];
+Hc(:,:)=homography_solver(aruco,cubo_2); %Matriz de homografía
 
 for i=1:756
     for j=1:756
