@@ -1,6 +1,6 @@
 % Usar ruta relativa al script para mayor robustez
 scriptDir = fileparts(mfilename('fullpath'));
-imagePath = fullfile(scriptDir, '..', 'repository', 'vegetables_1.jpg');
+imagePath = fullfile(scriptDir, '..', 'repository', 'vegetables_1.jpg'); % Elegir cualquier imagen de la carpeta repository
 imagen = imread(imagePath);
 
 %%imagen = imresize(imagen, 7);
