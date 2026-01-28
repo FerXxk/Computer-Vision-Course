@@ -2,27 +2,27 @@
 for imagen=1:1:11 % Para cada imagen
     switch imagen
         case 1
-            f = imread ("patch_1_01.png");
+            f = imread ("../repository/patch_1_01.png");
         case 2
-            f = imread ("patch_1_02.png");
+            f = imread ("../repository/patch_1_02.png");
         case 3
-            f = imread ("patch_1_03.png");
+            f = imread ("../repository/patch_1_03.png");
         case 4
-            f = imread ("patch_2_01.png");
+            f = imread ("../repository/patch_2_01.png");
         case 5
-            f = imread ("patch_2_02.png");
+            f = imread ("../repository/patch_2_02.png");
         case 6
-            f = imread ("patch_2_03.png");
+            f = imread ("../repository/patch_2_03.png");
         case 7
-            f = imread ("patch_3_01.png");
+            f = imread ("../repository/patch_3_01.png");
         case 8
-            f = imread ("patch_3_02.png");
+            f = imread ("../repository/patch_3_02.png");
         case 9
-            f = imread ("patch_3_03.png");
+            f = imread ("../repository/patch_3_03.png");
         case 10
-            f = imread ("patch_4_01.png");
+            f = imread ("../repository/patch_4_01.png");
         case 11
-            f = imread ("patch_4_02.png");
+            f = imread ("../repository/patch_4_02.png");
     end
 
     T = adaptthresh (f,0.58,'ForegroundPolarity','dark');

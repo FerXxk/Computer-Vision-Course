@@ -1,6 +1,6 @@
 %% Renderizado mesa
 
-Im_mesa = imread("imagenMesaMaderaColor1500.png");
+Im_mesa = imread("../repository/imagenMesaMaderaColor1500.png");
 [M1, N1, C] = size(Im_mesa);  % Dimensiones de la imagen de entrada
 
 % Inicializar la imagen de salida en color (asumiendo que Im_mesa es una imagen en color)
@@ -52,16 +52,16 @@ aruco = [0 200 200  0 ;
 for k=1:4
     switch k
         case 1
-            Im_aruco= imread("aruco5.png");
+            Im_aruco= imread("../repository/aruco5.png");
             aruco_k=mpcc1(7:8,1:4);
         case 2
-            Im_aruco= imread("aruco2.png");
+            Im_aruco= imread("../repository/aruco2.png");
             aruco_k=mpcc2(7:8,1:4);
         case 3
-            Im_aruco= imread("aruco3.png");
+            Im_aruco= imread("../repository/aruco3.png");
             aruco_k=mpcc3(7:8,1:4);
         case 4
-            Im_aruco= imread("aruco4.png");
+            Im_aruco= imread("../repository/aruco4.png");
             aruco_k=mpcc4(7:8,1:4);
     end
     Hc(:,:)=homography_solver(aruco,aruco_k); %Matriz de homografía

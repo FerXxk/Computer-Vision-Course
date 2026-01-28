@@ -95,7 +95,7 @@ mp4=[pm1,pm2,pm3,pm4,pm1];
 
 
 % Renderizado mesa
-Im_mesa= imread("imagenMesaMaderaGris1500.png");
+Im_mesa= imread("../repository/imagenMesaMaderaGris1500.png");
 
 W=1501;
 H=1000;
@@ -126,7 +126,7 @@ xlabel("Eje horizontal [pix]");
 ylabel("Eje vertical [pix]");grid on;
 
 % Renderizado cubo
-Im_aruco= imread("aruco.png");
+Im_aruco= imread("../repository/aruco.png");
 cubo_2=mp3(:,1:4);
 aruco = [0 756 756  0 ;
     0  0  756 756];

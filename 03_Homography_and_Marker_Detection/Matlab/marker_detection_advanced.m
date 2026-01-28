@@ -4,7 +4,7 @@ for escena=1:1:4  %% Para cada escena
 
     switch escena
         case 1
-            f = imread ("scene_photo_1.jpg");
+            f = imread ("../repository/scene_photo_1.jpg");
             minArea = 14000; % Área mínima
             maxArea = 25000; % Área máxima
             minWidth = 250; % Ancho mínimo
@@ -13,7 +13,7 @@ for escena=1:1:4  %% Para cada escena
             tipo='disk';
 
         case 2
-            f = imread ("scene_photo_2.jpg");
+            f = imread ("../repository/scene_photo_2.jpg");
             minArea = 10000; % Área mínima
             maxArea = 30000; % Área máxima
             minWidth = 300; % Ancho mínimo
@@ -21,7 +21,7 @@ for escena=1:1:4  %% Para cada escena
             m1=10; m2=3; m3=3; % Parámetros máscaras
             tipo='disk';
         case 3
-            f = imread ("scene_photo_3.jpg");
+            f = imread ("../repository/scene_photo_3.jpg");
             minArea = 14000; % Área mínima
             maxArea = 40000; % Área máxima
             minWidth = 350; % Ancho mínimo
@@ -29,7 +29,7 @@ for escena=1:1:4  %% Para cada escena
             m1=10; m2=3; m3=3; % Parámetros máscaras
             tipo='disk';
         case 4
-            f = imread ("scene_photo_4.jpg");
+            f = imread ("../repository/scene_photo_4.jpg");
             minArea = 47000; % Área mínima
             maxArea = 50000; % Área máxima
             minWidth = 350; % Ancho mínimo
@@ -188,16 +188,16 @@ for escena=1:1:4  %% Para cada escena
         for plantilla=0:1:3
             switch plantilla % Probamos cada plantilla
                 case 0
-                    a = imread ("arucoID0_marco.png");
+                    a = imread ("../repository/arucoID0_marco.png");
 
                 case 1
-                    a = imread ("arucoID1_marco.png");
+                    a = imread ("../repository/arucoID1_marco.png");
 
                 case 2
-                    a = imread ("arucoID2_marco.png");
+                    a = imread ("../repository/arucoID2_marco.png");
 
                 case 3
-                    a = imread ("arucoID3_marco.png");
+                    a = imread ("../repository/arucoID3_marco.png");
 
             end
             T = adaptthresh (a,0.58,'ForegroundPolarity','dark');

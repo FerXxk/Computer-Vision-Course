@@ -144,7 +144,7 @@ set(gca,'YDir', 'reverse');
 
 
 %% Renderizado mesa
-Im_mesa= imread("wooden_table_grayscale.png");
+Im_mesa= imread("../repository/wooden_table_grayscale.png");
 fondo_2=mp4(:,1:4);
 mesa = [0 626 626  0 ;
     0  0  417 417];
@@ -170,7 +170,7 @@ xlabel("Eje horizontal [pix]");
 ylabel("Eje vertical [pix]");grid on;
 
 %% Renderizado cubo
-Im_aruco= imread("aruco.png");
+Im_aruco= imread("../repository/aruco.png");
 cubo_2=mp3(:,1:4);
 aruco = [0 756 756  0 ;
     0  0  756 756];
@@ -334,7 +334,7 @@ end
 
 
 %% Renderizado cubo
-Im_aruco= imread("aruco.png");
+Im_aruco= imread("../repository/aruco.png");
 cubo_1=mpc1(:,1:4);
 cubo_2=mpc2(:,1:4);
 cubo_3=mpc3(:,1:4);
@@ -343,7 +343,7 @@ aruco = [0 756 756  1 ;
     0  0  756 756];
 Hc1(:,:)=homography_solver(aruco,cubo_1);
 %Matriz de homografía
-Hc2(:,:)=HomographySolve(aruco,cubo_2); %Matriz de homografía
+Hc2(:,:)=homography_solver(aruco,cubo_2); %Matriz de homografía
 Hc3(:,:)=homography_solver(aruco,cubo_3);
 %Matriz de homografía
 Hc4(:,:)=homography_solver(aruco,cubo_4);
@@ -409,7 +409,7 @@ imshow(uint8(Im_rend)); hold off;
 
 %%
 
-Im_mesa = imread("wooden_table_color.png");
+Im_mesa = imread("../repository/wooden_table_color.png");
 [M1, N1, C] = size(Im_mesa);  % Dimensiones de la imagen de entrada
 
 % Inicializar la imagen de salida en color (asumiendo que Im_mesa es una imagen en color)

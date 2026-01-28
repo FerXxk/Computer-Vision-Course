@@ -1,5 +1,5 @@
-[trainImags, trainLabels] = read_mnist('./MNIST/train-images-idx3-ubyte', './MNIST/train-labels-idx1-ubyte', 60000, 0);
-[testImags, testLabels] = read_mnist('./MNIST/t10k-images-idx3-ubyte', './MNIST/t10k-labels-idx1-ubyte', 10000, 0);
+[trainImags, trainLabels] = read_mnist('../repository/MNIST/train-images-idx3-ubyte', '../repository/MNIST/train-labels-idx1-ubyte', 60000, 0);
+[testImags, testLabels] = read_mnist('../repository/MNIST/t10k-images-idx3-ubyte', '../repository/MNIST/t10k-labels-idx1-ubyte', 10000, 0);
 
 %% Procesar imágenes y etiquetas
 vector_caracteristicas = [];

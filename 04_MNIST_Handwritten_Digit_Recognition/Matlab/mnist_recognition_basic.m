@@ -1,6 +1,6 @@
 
-[trainImags ,trainLabels] = read_mnist('./MNIST/train-images-idx3-ubyte','./MNIST/train-labels-idx1-ubyte', 60000, 0);
-[testImags, testLabels] = read_mnist ('./MNIST/t10k-images-idx3-ubyte', './MNIST/t10k-labels-idx1-ubyte', 10000, 0);
+[trainImags ,trainLabels] = read_mnist('../repository/MNIST/train-images-idx3-ubyte','../repository/MNIST/train-labels-idx1-ubyte', 60000, 0);
+[testImags, testLabels] = read_mnist ('../repository/MNIST/t10k-images-idx3-ubyte', '../repository/MNIST/t10k-labels-idx1-ubyte', 10000, 0);
 
 
 %% Procesar imágenes y etiquetas
@@ -60,7 +60,7 @@ hold on;
 for i = 1:Ntest
     % Obtener la imagen de prueba y su etiqueta
     Imag = testImags(:, :, i);
-    label = testLabels(i); % Numero real de la imagen
+    label = testLabels(i); % Real number de la imagen
     x = Imag(:); % Vector de características
 
     % Inicializar variables para encontrar la clase
@@ -90,16 +90,16 @@ for i = 1:Ntest
 
     img_ampliada = imresize(Imag, 10);
     imshow(img_ampliada);
-    title(['Número real: ' num2str(label)]);
+    title(['Real number: ' num2str(label)]);
 
 
-    % Mostrar la predicción
+    % Mostrar la Prediction
 
     if(clase==label)
-        text(10, 10, ['Predicción: ' num2str(clase)], 'Color', 'green', 'FontSize', 12, 'FontWeight', 'bold');
+        text(10, 10, ['PredictiontWeight', 'bold');
         pause(0.1);
     else
-        text(10, 10, ['Predicción: ' num2str(clase)], 'Color', 'red', 'FontSize', 12, 'FontWeight', 'bold');
+        text(10, 10, ['PredictiontWeight', 'bold');
         pause(0.3);
         fallos=fallos+1;
     end
@@ -119,7 +119,7 @@ hold on;
 for i = 1:Ntrain
     % Obtener la imagen de prueba y su etiqueta
     Imag = trainImags(:, :, i);
-    label = trainLabels(i); % Numero real de la imagen
+    label = traiReal number de la imagen
     x = Imag(:); % Vector de características
 
     % Inicializar variables para encontrar la clase
@@ -149,16 +149,16 @@ for i = 1:Ntrain
 
     img_ampliada = imresize(Imag, 10);
     imshow(img_ampliada);
-    title(['Número real: ' num2str(label)]);
+    title(['Real number: ' num2str(label)]);
 
 
-    % Mostrar la predicción
+    % Mostrar la Prediction
 
     if(clase==label)
-        text(10, 10, ['Predicción: ' num2str(clase)], 'Color', 'green', 'FontSize', 12, 'FontWeight', 'bold');
+        text(10, 10, ['PredictiontWeight', 'bold');
         pause(0.01);
     else
-        text(10, 10, ['Predicción: ' num2str(clase)], 'Color', 'red', 'FontSize', 12, 'FontWeight', 'bold');
+        text(10, 10, ['PredictiontWeight', 'bold');
         pause;
         fallos=fallos+1;
     end

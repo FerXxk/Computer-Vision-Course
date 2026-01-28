@@ -1,5 +1,5 @@
 
-imagen = imread ("vegetables_1.jpg");
+imagen = imread ("../repository/vegetables_1.jpg");
 
 %%imagen = imresize(imagen, 7);
 
