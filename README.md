@@ -4,7 +4,7 @@ This repository showcases a comprehensive set of projects implemented in **MATLA
 
 ---
 
-## 📂 Laboratory Projects
+## 📂 Projects
 
 ### 1. 📐 Camera Calibration and Homography
 *Focus: Geometric Vision & 3D Projections*
