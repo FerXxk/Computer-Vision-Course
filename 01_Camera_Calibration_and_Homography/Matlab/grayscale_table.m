@@ -1,3 +1,6 @@
+% Usar ruta relativa al script para mayor robustez
+scriptDir = fileparts(mfilename('fullpath'));
+
 % Grupo de cuatro vértices:
 % P1 = [0, 0, 0]';
 % P2 = [ 0, 4, 0]';
@@ -95,7 +98,7 @@ mp4=[pm1,pm2,pm3,pm4,pm1];
 
 
 % Renderizado mesa
-Im_mesa= imread("../repository/imagenMesaMaderaGris1500.png");
+Im_mesa = imread(fullfile(scriptDir, '..', 'repository', 'wooden_table_grayscale_large.png'));
 
 W=1501;
 H=1000;
@@ -104,7 +107,7 @@ fondo_2 = mp4(:, 1:4);
 mesa = [0 W W 0;
     0 0 H H];
 
-Hm(:,:)=homography_solver(mesa,fondo_2); %Matriz de homografía
+Hm(:,:)=HomographySolve(mesa,fondo_2); %Matriz de homografía
 
 Im_rend=100*ones(M,N);
 for i=1:W
@@ -126,11 +129,11 @@ xlabel("Eje horizontal [pix]");
 ylabel("Eje vertical [pix]");grid on;
 
 % Renderizado cubo
-Im_aruco= imread("../repository/aruco.png");
+Im_aruco = imread(fullfile(scriptDir, '..', 'repository', 'aruco.png'));
 cubo_2=mp3(:,1:4);
 aruco = [0 756 756  0 ;
     0  0  756 756];
-Hc(:,:)=homography_solver(aruco,cubo_2); %Matriz de homografía
+Hc(:,:)=HomographySolve(aruco,cubo_2); %Matriz de homografía
 
 for i=1:756
     for j=1:756

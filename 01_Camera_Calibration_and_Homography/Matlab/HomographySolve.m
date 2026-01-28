@@ -1,4 +1,4 @@
-function H = homography_solver (pIn, pOut)
+function H = HomographySolve (pIn, pOut)
 %
 % H = HomographySolve (pIn, pOut)
 %

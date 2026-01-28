@@ -1,6 +1,8 @@
+% Usar ruta relativa al script para mayor robustez
+scriptDir = fileparts(mfilename('fullpath'));
 
-[trainImags ,trainLabels] = read_mnist('../repository/MNIST/train-images-idx3-ubyte','../repository/MNIST/train-labels-idx1-ubyte', 60000, 0);
-[testImags, testLabels] = read_mnist ('../repository/MNIST/t10k-images-idx3-ubyte', '../repository/MNIST/t10k-labels-idx1-ubyte', 10000, 0);
+[trainImags ,trainLabels] = read_mnist(fullfile(scriptDir, '..', 'repository', 'MNIST', 'train-images-idx3-ubyte'), fullfile(scriptDir, '..', 'repository', 'MNIST', 'train-labels-idx1-ubyte'), 60000, 0);
+[testImags, testLabels] = read_mnist(fullfile(scriptDir, '..', 'repository', 'MNIST', 't10k-images-idx3-ubyte'), fullfile(scriptDir, '..', 'repository', 'MNIST', 't10k-labels-idx1-ubyte'), 10000, 0);
 
 
 %% Procesar imágenes y etiquetas
@@ -96,10 +98,10 @@ for i = 1:Ntest
     % Mostrar la Prediction
 
     if(clase==label)
-        text(10, 10, ['PredictiontWeight', 'bold');
+        text(10, 10, ['Prediction: ' num2str(clase)], 'Color', 'g', 'FontWeight', 'bold');
         pause(0.1);
     else
-        text(10, 10, ['PredictiontWeight', 'bold');
+        text(10, 10, ['Prediction: ' num2str(clase)], 'Color', 'r', 'FontWeight', 'bold');
         pause(0.3);
         fallos=fallos+1;
     end
@@ -119,7 +121,7 @@ hold on;
 for i = 1:Ntrain
     % Obtener la imagen de prueba y su etiqueta
     Imag = trainImags(:, :, i);
-    label = traiReal number de la imagen
+    label = trainLabels(i); % Real number de la imagen
     x = Imag(:); % Vector de características
 
     % Inicializar variables para encontrar la clase
@@ -155,10 +157,10 @@ for i = 1:Ntrain
     % Mostrar la Prediction
 
     if(clase==label)
-        text(10, 10, ['PredictiontWeight', 'bold');
+        text(10, 10, ['Prediction: ' num2str(clase)], 'Color', 'g', 'FontWeight', 'bold');
         pause(0.01);
     else
-        text(10, 10, ['PredictiontWeight', 'bold');
+        text(10, 10, ['Prediction: ' num2str(clase)], 'Color', 'r', 'FontWeight', 'bold');
         pause;
         fallos=fallos+1;
     end

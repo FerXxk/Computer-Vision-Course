@@ -8,45 +8,45 @@
 
 %% Elegir perspectiva 1
 
-Perspectiva1
+perspective_setup_1
 
 %% Elegir perspectiva 2
 
-Perspectiva2
+perspective_setup_2
 
-%% Vista desde cámara mesa 
+%% Vista desde cámara mesa
 
-VistaMesaCamara
+table_camera_view
 
 %% Mesa gris con aruco en el centro
 
-MesaGris
+grayscale_table
 
 
 %% Dibujo de los cubos estáticos en 3D
 
-Dibujo3DCubos
+draw_3d_cubes
 
 %% Mesa color con arucos en cubos estáticos
 
-CalculoMPCUBO
-CalculoMPRUEDAS
-ColorCubos
+calculate_cube_projection_matrix
+calculate_wheels_projection_matrix
+cube_coloring
 
 %% Vista desde la cámara de esos cubos
 
-VistaDesdeArriba
+top_down_view
 
 %% Cubos en 3D con movimiento
 
-CubosMoviendose
+moving_cubes
 
 %% Arucos en color moviendose
 
-ArucosMoviendose
+moving_arucos
 
 
 %% Vista desde la cámara en movimiento
 
-VistaCamaraMoviendose
+moving_camera_view
 

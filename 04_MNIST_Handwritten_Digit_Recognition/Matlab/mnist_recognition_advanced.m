@@ -1,5 +1,8 @@
-[trainImags, trainLabels] = read_mnist('../repository/MNIST/train-images-idx3-ubyte', '../repository/MNIST/train-labels-idx1-ubyte', 60000, 0);
-[testImags, testLabels] = read_mnist('../repository/MNIST/t10k-images-idx3-ubyte', '../repository/MNIST/t10k-labels-idx1-ubyte', 10000, 0);
+% Usar ruta relativa al script para mayor robustez
+scriptDir = fileparts(mfilename('fullpath'));
+
+[trainImags, trainLabels] = read_mnist(fullfile(scriptDir, '..', 'repository', 'MNIST', 'train-images-idx3-ubyte'), fullfile(scriptDir, '..', 'repository', 'MNIST', 'train-labels-idx1-ubyte'), 60000, 0);
+[testImags, testLabels] = read_mnist(fullfile(scriptDir, '..', 'repository', 'MNIST', 't10k-images-idx3-ubyte'), fullfile(scriptDir, '..', 'repository', 'MNIST', 't10k-labels-idx1-ubyte'), 10000, 0);
 
 %% Procesar imágenes y etiquetas
 vector_caracteristicas = [];
